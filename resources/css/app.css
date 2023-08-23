@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+    *{
+        font-family: 'Poppins', sans-serif;
+    }
+    body {
+        @apply bg-white;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    /*---------- Flash Message ----------*/
+    
+    .flash{
+        @apply flex flex-col items-center mt-8 mx-3;
+    }
+
+    .message.error{
+        @apply flex justify-center  bg-[#eb0c0c40] border border-red-500 p-4 rounded-md w-[100%] max-w-[800px];
+    }
+
+    .message.success{
+        @apply flex justify-center  bg-[#0ceb7040] border border-green-500 p-4 rounded-md w-[100%] max-w-[800px];
+    }
+
+    /*------------------ BOUTON -------------*/
+
+    .btn{
+        @apply p-3 rounded-md transition-all duration-200 text-white mt-3;
+    }
+
+    .btn-primary{
+        @apply bg-primary hover:bg-[#0071eac0];
+    }
+
+    /*------------- NAVIGATION --------------*/
+
+    .nav-bar{
+        @apply flex justify-between py-5 px-3 bg-[#f7f7f7] border-b border-gray-300;
+    }
+
+    .nav-bar-logo{
+        font-family: 'Poppins';
+        font-weight: 1000;
+        font-size: 20px;
+    }
+
+    /*------------ Login AND FORM---------------------*/
+
+    .users-form-content{
+        @apply flex flex-col items-center justify-center mt-5 mx-5;
+    }
+
+    .connect-title{
+        font-size: 2.5em;
+    }
+
+    .users-form-content form {
+        @apply flex flex-col justify-center items-center;
+    }
+
+    .input.text,
+    .input.tel,
+    .input.email,
+    .input.password {
+        
+        @apply mt-6  flex flex-col justify-start;
+    }
+
+    .input.text label,
+    .input.tel label,
+    .input.email label,
+    .input.password label{
+        @apply font-sans text-gray-500;
+    }
+
+    .input.text input,
+    .input.tel input ,
+    .input.email input,
+    .input.password input {
+        @apply rounded-md md:w-[360px] w-[250px] min-w-0 p-[8px] text-sm;
+        border: 0.05px solid rgb(228, 228, 228);
+        outline: none;
+    }
+
+    .input.text input:focus,
+    .input.tel input:focus,
+    .input.email input:focus,
+    .input.password input:focus{
+        border: 0.05px solid rgb(81, 191, 255);
+    }
+}
