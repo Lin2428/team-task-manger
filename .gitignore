@@ -1,11 +1,11 @@
 # CakePHP specific files #
 ##########################
-/config/.env
-/config/app_local.php
-/logs/*
-/tmp/*
-/vendor/*
-/webroot/build
+config/.env
+config/app_local.php
+logs/*
+tmp/*
+vendor/*
+webroot/build
 
 
 # OS generated files #
@@ -49,7 +49,7 @@ nbproject/*
 # Sass preprocessor
 .sass-cache/
 # node
-/node_modules/*
+node_modules/*
 # yarn
 yarn-debug.log
 yarn-error.log
