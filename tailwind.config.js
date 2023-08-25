@@ -5,7 +5,7 @@ module.exports = {
   ],
   content: [
     "./templates/**/*.php",
-    "./node_modules/flowbite/**/*.js"
+    "./node_modules/flowbite/dist/flowbite.min.js"
 
   ],
   theme: {

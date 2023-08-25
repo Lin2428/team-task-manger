@@ -1,9 +1,11 @@
 # CakePHP specific files #
 ##########################
 /config/.env
+/config/app_local.php
 /logs/*
 /tmp/*
 /vendor/*
+/webroot/build/*
 
 
 # OS generated files #

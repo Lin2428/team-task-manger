@@ -2,7 +2,7 @@
     <button class="cache-sidebar"><i class="bi bi-chevron-left"></i></button>
     <div class="flex px-3 pb-3 items-center">
         <div class="sidebar-img"></div>
-        <span class="font-bold text-sm"><?= $users['name'] ?></span>
+        <span class="font-bold"><?= $users['name'] ?></span>
     </div>
     <ul class="sidebar-link-contener">
         <a href="/users/">
