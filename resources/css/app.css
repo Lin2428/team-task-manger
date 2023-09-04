@@ -3,59 +3,98 @@
 @tailwind utilities;
 
 @layer base {
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
-    *{
-        font-family: 'Poppins', sans-serif;
-    }
-    body {
+    body  {
         @apply bg-white;
-        font-family: 'Poppins', sans-serif;
+        font-family: 'Source Sans 3', 'Inter', sans-serif;
     }
 
     /*---------- Flash Message ----------*/
     
-    .flash{
+    .flash {
         @apply flex flex-col items-center mt-8 mx-3;
     }
 
-    .message.error{
+    .message.error {
         @apply flex justify-center  bg-[#eb0c0c40] border border-red-500 p-4 rounded-md w-[100%] max-w-[800px];
     }
 
-    .message.success{
+    .message.success {
         @apply flex justify-center  bg-[#0ceb7040] border border-green-500 p-4 rounded-md w-[100%] max-w-[800px];
     }
 
     /*------------------ BOUTON -------------*/
 
-    .btn{
+    .btn {
         @apply p-3 rounded-md transition-all duration-200 text-white mt-3;
     }
 
-    .btn-primary{
+    .btn-primary {
         @apply bg-primary hover:bg-[#0071eac0];
     }
 
     /*------------- NAVIGATION --------------*/
 
-    .nav-bar{
+    .nav-bar-login {
         @apply flex justify-between py-5 px-3 bg-[#f7f7f7] border-b border-gray-300;
     }
 
-    .nav-bar-logo{
-        font-family: 'Poppins';
+    .nav-bar-login-logo {
         font-weight: 1000;
         font-size: 20px;
     }
 
+    .nav-bar-user {
+        @apply flex justify-between py-2 px-5 bg-[#eceff8];
+    }
+
+    .nav-bar-user-logo {
+        font-weight: bold;
+        font-size: 15px;
+    }
+
+    .nav-bar-content {
+        @apply flex items-center justify-between w-[100%];
+    }
+
+    .nav-bar-content .nav-link {
+        @apply space-x-4;
+    }
+
+    .nav-link a {
+        @apply hover:bg-gray-300 px-3 py-2 rounded-md;
+    }
+
+    .icon-navbar {
+        font-size: 18px;
+    }
+
+    .icon-navbar-user {
+        font-size: 28px;
+    }
+
+    .navber-baget{
+        @apply absolute text-sm font-bold bg-primary text-white px-2 rounded-xl -translate-x-4 translate-y-[2px];
+        font-size: 12px;
+    }
+
+    .dropdown-user {
+        @apply z-10 hidden bg-white rounded-lg shadow-md w-44 p-4;
+    }
+
+    .tooltipe-content {
+        @apply absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 ; 
+    }
+
+
+
     /*------------ Login AND FORM---------------------*/
 
-    .users-form-content{
+    .users-form-content {
         @apply flex flex-col items-center justify-center mt-5 mx-5;
     }
 
-    .connect-title{
-        font-size: 2.5em;
+    .connect-title {
+        font-size: 1.5em;
     }
 
     .users-form-content form {
@@ -73,7 +112,7 @@
     .input.text label,
     .input.tel label,
     .input.email label,
-    .input.password label{
+    .input.password label {
         @apply font-sans text-gray-500;
     }
 
@@ -92,4 +131,49 @@
     .input.password input:focus{
         border: 0.05px solid rgb(81, 191, 255);
     }
+}
+
+/*----------------- USER INTERFACE --------------------*/
+
+.body-user {
+    @apply fixed grid grid-cols-5 gap-2 w-[100%] h-[100%] bg-[#eceff8];
+}
+
+.body-user .sidebar {
+    @apply w-[100%] max-w-[270px] h-[100%] bg-white rounded-r-md pt-4;
+    overflow-x: auto;
+}
+
+.user-main-contente{
+    @apply col-span-4 w-[100%]  h-[100%] bg-white rounded-l-md;
+}
+
+.cache-sidebar{
+    @apply hidden bg-gray-100 text-gray-800 font-bold absolute right-0 px-2 py-1 top-0 rounded-tr-md rounded-bl-md hover:bg-gray-300 transition-all duration-100 ;
+}
+
+.sidebar:hover .cache-sidebar{
+    @apply block;
+}
+
+.sidebar-img{
+    @apply w-[40px] bg-gray-300 h-[40px] rounded-full mr-3;
+}
+
+
+.sidebar-link-contener {
+    @apply px-3;
+    border-bottom: solid 0.2px rgb(223, 223, 223);
+    cursor: pointer;
+}
+
+.sidebar-link {
+    @apply my-2 p-2 rounded-md hover:bg-gray-200;
+}
+.sidebar-link i{
+    @apply mr-2;
+}
+
+.active-link{
+    @apply bg-[#cce5ff];
 }
