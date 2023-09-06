@@ -11,7 +11,7 @@
     /*---------- Flash Message ----------*/
     
     .flash {
-        @apply flex flex-col items-center mt-8 mx-3;
+        @apply flex flex-col items-center mx-3 mt-2;
     }
 
     .message.error {
@@ -170,10 +170,41 @@
 .sidebar-link {
     @apply my-2 p-2 rounded-md hover:bg-gray-200;
 }
-.sidebar-link i{
+.sidebar-link i {
     @apply mr-2;
 }
 
-.active-link{
+.active-link {
     @apply bg-[#cce5ff];
+}
+
+/*------------ GESTION DE PROJET ---------------*/
+.table-th {
+    @apply px-6 font-medium text-gray-900 whitespace-nowrap border-l;
+}
+.table-th-name {
+    @apply pl-6 font-medium text-gray-900 whitespace-nowrap w-[250px];
+}
+.project-open {
+    @apply hidden;
+}
+.table-th-name:hover .project-open {
+    @apply block;
+}
+
+/*------------- Tableau de bord -----------*/
+.cart-task {
+    @apply h-[125px] w-[260px] shadow-sm rounded-md p-3 border;
+}
+
+.cart-task-title {
+ @apply font-bold mb-4;
+}
+
+.cart-task-count{
+    @apply font-bold text-3xl;
+}
+
+.cart-task-check{
+    @apply text-sm text-gray-600;
 }

@@ -1,5 +1,5 @@
   <!-- NAVBAR LOGIN -->
-  <?php if (empty($users)) : ?>
+  <?php if (str_contains($url, "/users/add") || str_contains($url, "/users/login")) : ?>
     <nav class="nav-bar-login">
       <h2 class="nav-bar-login-logo">>>PROJECTS</h2>
     </nav>

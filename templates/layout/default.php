@@ -4,6 +4,8 @@
  * @var \App\View\AppView $this
  */
 
+$url = $this->request->getRequestTarget();
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -35,8 +37,10 @@
     <?php require 'parts/navbar.php'; ?>
   </header>
 
-  <?php if (empty($users)) : ?>
-    <?= $this->Flash->render() ?>
+  <?php if (str_contains($url, "/users/add") || str_contains($url, "/users/login")) : ?>
+    <div class="flash">
+      <?= $this->Flash->render() ?>
+    </div>
     <?= $this->fetch('content') ?>
   <?php else : ?>
     <div class="body-user">
@@ -46,8 +50,8 @@
       <div class="user-main-contente relative">
         <div class="flash">
           <?= $this->Flash->render() ?>
-          <?= $this->fetch('content') ?>
         </div>
+        <?= $this->fetch('content') ?>
       </div>
     </div>
   <?php endif ?>
@@ -56,6 +60,7 @@
 
 
   <?= $this->fetch('script') ?>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
 </body>
 
 </html>
