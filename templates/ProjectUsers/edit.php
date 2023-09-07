@@ -34,7 +34,7 @@
                 ?>
             </div>
         </div>
-        <button type="submit" class="btn bg-primary w-full">Ajouter au membres</button>
+        <button type="submit" class="btn bg-primary w-full">Modifier</button>
         <?= $this->Form->end() ?>
     </div>
 </div>
