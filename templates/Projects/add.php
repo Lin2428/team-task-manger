@@ -22,7 +22,7 @@
             </div>
             <div class="mt-6">
                 <label for="description" class="text-gray-500">Description</label>
-                <textarea name="description" id="description" class="w-full rounded-md min-h-[100px] p-2 border-gray-300"></textarea>
+                <textarea name="description" id="description"></textarea>
             </div>
              <button type="submit" class="btn bg-primary w-full">Créer le projet</button>
         <?= $this->Form->end() ?>

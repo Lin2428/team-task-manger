@@ -145,7 +145,8 @@
 }
 
 .user-main-contente{
-    @apply col-span-4 w-[100%]  h-[100%] bg-white rounded-l-md;
+    @apply col-span-4 w-[100%] h-[150%] bg-white rounded-l-md;
+    overflow-x: auto;
 }
 
 .cache-sidebar{

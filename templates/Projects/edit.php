@@ -7,7 +7,7 @@
 ?>
 <div class="flex flex-col items-center mt-3">
     <div>
-        <h1 class="text-3xl font-bold">Créer un nouveau Projet</h1>
+        <h1 class="text-3xl font-bold">Modifier le Projet</h1>
         <?= $this->Form->create($project) ?>
             <div class="flex justify-between items-center space-x-3">
                 <div class="mt-6 ">
