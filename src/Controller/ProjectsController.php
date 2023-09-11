@@ -62,7 +62,8 @@ class ProjectsController extends AppController
 
         $userId = $this->Authentication->getResult()->getData()['id'];
         $user = $this->Projects->Users->get($userId);
-        $this->set(compact('project', 'user'));
+        $users = $this->Projects->Users->find();
+        $this->set(compact('project', 'user', 'users'));
     }
 
     /**
@@ -87,8 +88,8 @@ class ProjectsController extends AppController
             $this->Flash->error(__('The project could not be saved. Please, try again.'));
         }
         $userId = $this->Authentication->getResult()->getData()['id'];
-        $user = $this->Projects->Users->get($userId);
-        $this->set(compact('project', 'user'));
+        $users = $this->Projects->Users->find();
+        $this->set(compact('project', 'user', 'users'));
     }
 
     /**
