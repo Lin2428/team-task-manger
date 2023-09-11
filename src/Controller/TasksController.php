@@ -51,6 +51,7 @@ class TasksController extends AppController
     {
         $task = $this->Tasks->newEmptyEntity();
         if ($this->request->is('post')) {
+            dump($this->request->getData());
             $task = $this->Tasks->patchEntity($task, $this->request->getData());
             if ($this->Tasks->save($task)) {
                 $this->Flash->success(__('The task has been saved.'));
@@ -59,9 +60,9 @@ class TasksController extends AppController
             }
             $this->Flash->error(__('The task could not be saved. Please, try again.'));
         }
-        $projects = $this->Tasks->Projects->find('list', ['limit' => 200])->all();
-        $users = $this->Tasks->Users->find('list', ['limit' => 200])->all();
-        $creators = $this->Tasks->Creators->find('list', ['limit' => 200])->all();
+        $projects = $this->Tasks->Projects->find();
+        $users = $this->Tasks->Users->find();
+        $creators = $this->Authentication->getResult()->getData()['id'];
         $this->set(compact('task', 'projects', 'users', 'creators'));
     }
 
