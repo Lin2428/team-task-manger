@@ -76,7 +76,7 @@ class TasksController extends AppController
     public function edit($id = null)
     {
         $task = $this->Tasks->get($id, [
-            'contain' => [],
+            'contain' => ['Projects', 'Users'],
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $task = $this->Tasks->patchEntity($task, $this->request->getData());
@@ -87,9 +87,9 @@ class TasksController extends AppController
             }
             $this->Flash->error(__('The task could not be saved. Please, try again.'));
         }
-        $projects = $this->Tasks->Projects->find('list', ['limit' => 200])->all();
-        $users = $this->Tasks->Users->find('list', ['limit' => 200])->all();
-        $creators = $this->Tasks->Creators->find('list', ['limit' => 200])->all();
+        $projects = $this->Tasks->Projects->find();
+        $users = $this->Tasks->Users->find();
+        $creators = $this->Authentication->getResult()->getData()['id'];
         $this->set(compact('task', 'projects', 'users', 'creators'));
     }
 
