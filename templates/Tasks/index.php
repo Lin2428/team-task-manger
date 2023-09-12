@@ -66,7 +66,7 @@
                         </th>
                         <th scope="row" class="table-th-name border-l">
                             <div class="flex justify-between items-center w-full">
-                                <a href="/users/view/<?= $task->id ?>" class="flex justify-between items-center w-full">
+                                <a href="/tasks/view/<?= $task->id ?>" class="flex justify-between items-center w-full">
                                     <span><?= $task->name ?></span>
                                     <span data-tooltip-target="tooltip-open-project" class="project-open"><i class="bi bi-arrows-angle-expand mr-3"></i></span>
                                     <div id="tooltip-open-project" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
@@ -92,7 +92,7 @@
                             <?= $task->user->name ?>
                         </th>
                         <th scope="row" class="table-th ">
-                            <?= $task->status ?>
+                            <?= ucfirst($task->status) ?>
                         </th>
                         <th scope="row" class="table-th ">
                             <?= $task->created ?>

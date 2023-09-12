@@ -44,7 +44,7 @@
         <?php
         echo $this->Form->control('created_by', ['type' => 'hidden', 'value' => $creators]);
         echo $this->Form->control('description');
-        echo $this->Form->control('status', ['type' => 'hidden', 'value' => 'ouvert']);
+        echo $this->Form->control('status', ['type' => 'hidden', 'value' => 'ouverte']);
         ?>
         <button type="submit" class="btn bg-primary w-full">Créer la tâche</button>
         <?= $this->Form->end() ?>

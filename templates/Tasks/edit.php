@@ -39,14 +39,18 @@
                     <?php endforeach ?>
                 </select>
             </div>
-            <?php
-
-            ?>
+            <div class="mt-4">
+                <label for="status" class="text-gray-500">Statut</label><br>
+                <select name="status" id="user_id" class="py-[6px] px-2 rounded-md border-gray-300">
+                    <option selected value="<?= $task->status ?>"><?= ucfirst($task->status) ?></option>
+                        <option value="fermé">Fermé</option>
+                        <option value="ouverte">Ouverte</option>
+                </select>
+            </div>
         </div>
         <?php
         echo $this->Form->control('created_by', ['type' => 'hidden', 'value' => $creators]);
         echo $this->Form->control('description');
-        echo $this->Form->control('status', ['type' => 'hidden', 'value' => 'ouvert']);
         ?>
         <button type="submit" class="btn bg-primary w-full">Modifier la tâche</button>
         <?= $this->Form->end() ?>

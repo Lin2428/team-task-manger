@@ -209,3 +209,21 @@
 .cart-task-check{
     @apply text-sm text-gray-600;
 }
+
+/*-------------- Tâche --------------*/
+
+.card-description{
+    @apply w-[70%];
+}
+
+.card-description-head{
+    @apply border-b px-3 py-1 bg-primary rounded-t-md text-white;
+}
+
+.card-description-body{
+    @apply px-3 py-4 border rounded-b-md;
+}
+
+.card-desc-info{
+    @apply w-[30%] border-l p-3 space-y-5;
+}
