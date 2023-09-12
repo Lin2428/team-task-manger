@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @var \App\View\AppView $this
  * @var iterable<\App\Model\Entity\Task> $tasks
@@ -56,7 +57,7 @@
                 </tr>
             </thead>
             <tbody>
-            <?php foreach ($tasks as $task): ?>
+                <?php foreach ($tasks as $task) : ?>
                     <tr class="bg-white border-b hover:bg-gray-100 hover:shadow-xl">
                         <th class="w-4 p-4">
                             <div class="flex items-center">
@@ -108,8 +109,9 @@
                                     ['action' => 'delete', $task->id],
                                     [
                                         'confirm' => __('Voulez vous vraiment supprimer ce membre du projet ?'),
-                                         'class' => 'bi bi-person-x text-lg hover:bg-gray-300 font-medium rounded-lg px-5 py-2 text-center inline-flex items-center'
-                                         ]
+                                        'class' => 'bi bi-clipboard-x text-lg hover:bg-gray-300 font-medium rounded-lg px-5 py-2 text-center inline-flex items-center',
+                                        'data-tooltip-target' => "tooltip-delete"
+                                    ]
                                 ) ?>
                             </div>
                         </th>
