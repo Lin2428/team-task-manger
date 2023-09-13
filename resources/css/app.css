@@ -137,6 +137,7 @@
 
 .body-user {
     @apply fixed grid grid-cols-5 gap-2 w-[100%] h-[100%] bg-[#eceff8];
+   
 }
 
 .body-user .sidebar {
@@ -145,7 +146,8 @@
 }
 
 .user-main-contente{
-    @apply col-span-4 w-[100%]  h-[100%] bg-white rounded-l-md;
+    @apply fixed right-0  col-span-4 w-[80%] h-[90%] bg-white rounded-l-md;
+    overflow: auto;
 }
 
 .cache-sidebar{
