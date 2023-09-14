@@ -1,0 +1,31 @@
+<?php
+/**
+ * @var \App\View\AppView $this
+ * @var \App\Model\Entity\Message $message
+ * @var \Cake\Collection\CollectionInterface|string[] $users
+ * @var \Cake\Collection\CollectionInterface|string[] $projects
+ */
+?>
+<div class="row">
+    <aside class="column">
+        <div class="side-nav">
+            <h4 class="heading"><?= __('Actions') ?></h4>
+            <?= $this->Html->link(__('List Messages'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
+        </div>
+    </aside>
+    <div class="column-responsive column-80">
+        <div class="messages form content">
+            <?= $this->Form->create($message) ?>
+            <fieldset>
+                <legend><?= __('Add Message') ?></legend>
+                <?php
+                    echo $this->Form->control('message');
+                    echo $this->Form->control('user_id', ['options' => $users]);
+                    echo $this->Form->control('project_id', ['options' => $projects]);
+                ?>
+            </fieldset>
+            <?= $this->Form->button(__('Submit')) ?>
+            <?= $this->Form->end() ?>
+        </div>
+    </div>
+</div>

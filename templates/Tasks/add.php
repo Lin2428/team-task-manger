@@ -11,6 +11,7 @@
  *  @var array $users
  */
 
+$projectId = $_SERVER['QUERY_STRING'];
 ?>
 <div class="flex flex-col mx-8 py-3">
     <div>
@@ -20,15 +21,6 @@
             <di class="-mt-2">
                 <?php echo $this->Form->control('name', ['label' => 'Titre de la tâche']); ?>
             </di>
-            <div class="mt-4">
-                <label for="project_id" class="text-gray-500">Projet</label><br>
-                <select name="project_id" id="project_id" class="py-[6px] px-2 rounded-md border-gray-300">
-                    <?php foreach ($projects as $project) : ?>
-                        <option value="<?= $project->id ?>"><?= $project->name ?></option>
-                    <?php endforeach ?>
-                </select>
-            </div>
-
             <div class="mt-4">
                 <label for="user_id" class="text-gray-500">Tâche attribué à</label><br>
                 <select name="user_id" id="user_id" class="py-[6px] px-2 rounded-md border-gray-300">
@@ -42,6 +34,7 @@
             ?>
         </div>
         <?php
+        echo $this->Form->control('project_id', ['type' => 'hidden', 'value' => $projectId]);
         echo $this->Form->control('created_by', ['type' => 'hidden', 'value' => $creators]);
         echo $this->Form->control('description');
         echo $this->Form->control('status', ['type' => 'hidden', 'value' => 'ouverte']);

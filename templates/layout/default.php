@@ -24,9 +24,6 @@ $url = $this->request->getRequestTarget();
 
   <?= $this->fetch('meta') ?>
   <?= $this->fetch('css') ?>
-  <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
-
-
   <?php $this->Vite->asset(['resources/css/app.css', 'resources/js/app.js'], ['block' => false]) ?>
 
 </head>

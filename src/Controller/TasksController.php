@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Controller;
@@ -18,12 +19,14 @@ class TasksController extends AppController
      */
     public function index()
     {
+        $projectId = $this->request->getParam('pass')[0];
         $this->paginate = [
             'contain' => ['Projects', 'Users', 'Creators'],
         ];
-        $tasks = $this->paginate($this->Tasks);
-
-        $this->set(compact('tasks'));
+        $tasks = $this->paginate($this->Tasks->find()
+            ->where(['project_id' => $projectId]));
+    
+        $this->set(compact('tasks', 'projectId'));
     }
 
     /**

@@ -67,6 +67,9 @@ class ViteHelper extends Helper
         if($isCss) {
             echo $this->Html->css($name, $options);
         } else {
+            $options = array_merge($options, [
+                'type' => 'module'
+            ]);
             echo $this->Html->script($name, $options);
         }
     }

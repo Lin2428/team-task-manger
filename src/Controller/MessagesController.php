@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Controller;
@@ -21,7 +22,9 @@ class MessagesController extends AppController
         $this->paginate = [
             'contain' => ['Users', 'Projects'],
         ];
-        $messages = $this->paginate($this->Messages);
+        $messages = $this->paginate(
+            $this->Messages->find()
+        ->where(['project_id' => 1]));
 
         $this->set(compact('messages'));
     }
