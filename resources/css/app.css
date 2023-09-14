@@ -89,8 +89,14 @@
 
     /*------------ Login AND FORM---------------------*/
 
+    .center-login{
+        @apply translate-y-[25%];
+    }
+    .center-add-user{
+        @apply translate-y-[8%];
+    }
     .users-form-content {
-        @apply flex flex-col items-center justify-center mt-5 mx-5;
+        @apply flex flex-col items-center justify-center;
     }
 
     .connect-title {
@@ -98,7 +104,7 @@
     }
 
     .users-form-content form {
-        @apply flex flex-col justify-center items-center;
+        @apply flex flex-col items-center justify-center ;
     }
 
     .input.text,
