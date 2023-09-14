@@ -1,5 +1,5 @@
 import 'flowbite/dist/flowbite.min.js';
 
-tinymce.init({
-    selector: '#description'
-});
+import configureEditor from './tinymce';
+
+configureEditor('#description');

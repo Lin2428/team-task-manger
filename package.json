@@ -21,6 +21,7 @@
     "vite": "^4.4.9"
   },
   "dependencies": {
-    "flowbite": "^1.8.1"
+    "flowbite": "^1.8.1",
+    "tinymce": "^6.7.0"
   }
 }
