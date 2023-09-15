@@ -54,14 +54,14 @@ class TasksController extends AppController
     {
         $task = $this->Tasks->newEmptyEntity();
         if ($this->request->is('post')) {
-            dump($this->request->getData());
+            $projectId = $this->request->getData('project_id');
             $task = $this->Tasks->patchEntity($task, $this->request->getData());
             if ($this->Tasks->save($task)) {
-                $this->Flash->success(__('The task has been saved.'));
+                //$this->Flash->success(__('The task has been saved.'));
 
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['action' => 'index/'.$projectId]);
             }
-            $this->Flash->error(__('The task could not be saved. Please, try again.'));
+            //$this->Flash->error(__('The task could not be saved. Please, try again.'));
         }
         $projects = $this->Tasks->Projects->find();
         $users = $this->Tasks->Users->find();
@@ -82,13 +82,14 @@ class TasksController extends AppController
             'contain' => ['Projects', 'Users'],
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
+            $projectId = $this->request->getData('project_id');
             $task = $this->Tasks->patchEntity($task, $this->request->getData());
             if ($this->Tasks->save($task)) {
-                $this->Flash->success(__('The task has been saved.'));
+                //$this->Flash->success(__('The task has been saved.'));
 
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['action' => 'index/'.$projectId]);
             }
-            $this->Flash->error(__('The task could not be saved. Please, try again.'));
+            //$this->Flash->error(__('The task could not be saved. Please, try again.'));
         }
         $projects = $this->Tasks->Projects->find();
         $users = $this->Tasks->Users->find();
@@ -106,13 +107,14 @@ class TasksController extends AppController
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
+        $projectId = $this->request->getParam('pass')[1];
         $task = $this->Tasks->get($id);
         if ($this->Tasks->delete($task)) {
-            $this->Flash->success(__('The task has been deleted.'));
+            //$this->Flash->success(__('The task has been deleted.'));
         } else {
-            $this->Flash->error(__('The task could not be deleted. Please, try again.'));
+            //$this->Flash->error(__('The task could not be deleted. Please, try again.'));
         }
 
-        return $this->redirect(['action' => 'index']);
+        return $this->redirect(['action' => 'index/'.$projectId]);
     }
 }

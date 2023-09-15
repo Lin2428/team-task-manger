@@ -7,6 +7,8 @@
  * @var \Cake\Collection\CollectionInterface|string[] $users
  * @var \Cake\Collection\CollectionInterface|string[] $roles
  */
+
+ $projectId = intval($_SERVER['QUERY_STRING']) ;
 ?>
 
 <div class="flex flex-col items-center mt-3">
@@ -16,11 +18,7 @@
         <div class="flex justify-between items-center space-x-3">
             <div class="mt-6 ">
                 <?php
-                 echo $this->Form->control('project_id', [
-                    'options' => $projects,
-                    'label' => '',
-                    'class' => 'py-[6px] px-2 w-[500px] rounded-md border-gray-300 mb-4'
-                ]);
+                 echo $this->Form->control('project_id', ['type' => 'hidden', 'value' =>  $projectId]);
 
                 echo $this->Form->control('user_id', [
                     'options' => $users,

@@ -10,7 +10,7 @@
     <h2 class="text-3xl font-[500] border-b-[0.05px] pb-4 mb-1"><?= $task->name ?></h2>
     <div class="flex items-center space-x-1 border-b pb-1.5 mb-3">
         <span class="p-2 bg-primary text-white font-bold rounded-full"><?= ucfirst($task->status) ?></span>
-        <a href="/tasks/edit/<?= $task->id ?>" data-tooltip-target="tooltip-edite" class="hover:bg-gray-300 font-medium rounded-lg px-5 pt-2 pb-1 text-center inline-flex items-center" type="button">
+        <a href="/tasks/edit/<?= $task->id.'/?'.$task->project_id ?>" data-tooltip-target="tooltip-edite" class="hover:bg-gray-300 font-medium rounded-lg px-5 pt-2 pb-1 text-center inline-flex items-center" type="button">
             <i class="bi bi-pencil-square text-lg"></i>
         </a>
         <div id="tooltip-edite" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
@@ -19,7 +19,7 @@
         </div>
         <?= $this->Form->postLink(
             __(''),
-            ['action' => 'delete', $task->id],
+            ['action' => 'delete', $task->id. '/'.$task->project_id],
             [
                 'confirm' => __('Voulez vous vraiment supprimer cette tâche ?', $task->id), 'class' => 'bi bi-trash3
             hover:bg-gray-300 font-medium rounded-lg text-lg px-5 py-3 text-center inline-flex items-center',

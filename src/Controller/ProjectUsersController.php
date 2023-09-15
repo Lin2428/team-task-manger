@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Controller;
@@ -18,12 +19,14 @@ class ProjectUsersController extends AppController
      */
     public function index()
     {
+        $projectId = $this->request->getParam('pass')[0];
         $this->paginate = [
             'contain' => ['Projects', 'Users', 'Roles'],
         ];
-        $projectUsers = $this->paginate($this->ProjectUsers);
+        $projectUsers = $this->paginate($this->ProjectUsers->find()
+            ->where(['project_id' => $projectId]));
 
-        $this->set(compact('projectUsers'));
+        $this->set(compact('projectUsers', 'projectId'));
     }
 
     /**
@@ -51,11 +54,12 @@ class ProjectUsersController extends AppController
     {
         $projectUser = $this->ProjectUsers->newEmptyEntity();
         if ($this->request->is('post')) {
+            $projectId = $this->request->getData('project_id');
             $projectUser = $this->ProjectUsers->patchEntity($projectUser, $this->request->getData());
             if ($this->ProjectUsers->save($projectUser)) {
                 $this->Flash->success(__('The project user has been saved.'));
 
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect('projectUsers/index/'.$projectId);
             }
             $this->Flash->error(__('The project user could not be saved. Please, try again.'));
         }
@@ -103,12 +107,13 @@ class ProjectUsersController extends AppController
     {
         $this->request->allowMethod(['post', 'delete']);
         $projectUser = $this->ProjectUsers->get($id);
+        $projectId = $projectUser->project_id;
         if ($this->ProjectUsers->delete($projectUser)) {
             $this->Flash->success(__('The project user has been deleted.'));
         } else {
             $this->Flash->error(__('The project user could not be deleted. Please, try again.'));
         }
 
-        return $this->redirect(['action' => 'index']);
+        return $this->redirect('projectUsers/index/'.$projectId);
     }
 }

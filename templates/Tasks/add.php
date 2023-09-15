@@ -36,7 +36,9 @@ $projectId = $_SERVER['QUERY_STRING'];
         <?php
         echo $this->Form->control('project_id', ['type' => 'hidden', 'value' => $projectId]);
         echo $this->Form->control('created_by', ['type' => 'hidden', 'value' => $creators]);
-        echo $this->Form->control('description');
+        ?>
+        <textarea name="description" id="description"></textarea>
+        <?php
         echo $this->Form->control('status', ['type' => 'hidden', 'value' => 'ouverte']);
         ?>
         <button type="submit" class="btn bg-primary w-full">Créer la tâche</button>

@@ -8,7 +8,7 @@
 ?>
 
 <div class="mx-8 py-3">
-    <h2 class="text-3xl font-[500] border-b-[0.05px] pb-4 mb-4">Tâches des projets</h2>
+    <h2 class="text-3xl font-[500] border-b-[0.05px] pb-4 mb-4">Tâches du projets</h2>
     <div class="flex space-x-1 items-center text-gray-800 text-sm">
         <a href="/tasks/add/?<?= $projectId ?> " class="py-2 px-3 text-white rounded-md bg-primary hover:bg-[#427dbb] cursor-pointer"><i class="bi bi-list"></i>Ajouter une taches</a>
 
@@ -102,12 +102,12 @@
 
                         <th scope="row" class="table-th ">
                             <div class="flex justify-between">
-                                <a href="/tasks/edit/<?= $task->id ?>" data-tooltip-target="tooltip-edit" class="hover:bg-gray-300 font-medium rounded-lg text-sm px-5 py-2 text-center inline-flex items-center" type="button">
+                                <a href="/tasks/edit/<?= $task->id.'/?'.$task->project_id ?>" data-tooltip-target="tooltip-edit" class="hover:bg-gray-300 font-medium rounded-lg text-sm px-5 py-2 text-center inline-flex items-center" type="button">
                                     <i class="bi bi-pencil-square"></i>
                                 </a>
                                 <?= $this->Form->postLink(
                                     __(''),
-                                    ['action' => 'delete', $task->id],
+                                    ['action' => 'delete', $task->id.'/'.$task->project_id],
                                     [
                                         'confirm' => __('Voulez vous vraiment supprimer ce membre du projet ?'),
                                         'class' => 'bi bi-clipboard-x text-lg hover:bg-gray-300 font-medium rounded-lg px-5 py-2 text-center inline-flex items-center',

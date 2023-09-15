@@ -9,7 +9,7 @@
 <div class="mx-8 py-3">
     <h2 class="text-3xl font-[500] border-b-[0.05px] pb-4 mb-4">Membres du projet</h2>
     <div class="flex space-x-1 items-center text-gray-800 text-sm">
-        <a href="/projectUsers/add" class="py-2 px-3 text-white rounded-md bg-primary hover:bg-[#427dbb] cursor-pointer"><i class="bi bi-person-plus"></i> Ajouter un membres</a>
+        <a href="/projectUsers/add/?<?= $projectId ?>" class="py-2 px-3 text-white rounded-md bg-primary hover:bg-[#427dbb] cursor-pointer"><i class="bi bi-person-plus"></i> Ajouter un membres</a>
 
         <form>
             <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>

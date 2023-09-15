@@ -58,7 +58,7 @@ class TasksTable extends Table
         ]);
         $this->belongsTo('Creators', [
             'className' => UsersTable::class,
-            'foreignKey' => 'user_id',
+            'foreignKey' => 'created_by',
             'joinType' => 'INNER',
         ]);
     }
