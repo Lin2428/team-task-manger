@@ -19,14 +19,27 @@ class ProjectUsersController extends AppController
      */
     public function index()
     {
-        $projectId = $this->request->getParam('pass')[0];
+        //Add USER 
+        $projectUser = $this->ProjectUsers->newEmptyEntity();
+        if (!empty($this->request->getData())) {
+
+            $projectUser = $this->ProjectUsers->patchEntity($projectUser, $this->request->getData());
+            $this->ProjectUsers->save($projectUser);
+        }
+        $projects = $this->ProjectUsers->Projects->find('list', ['limit' => 200])->all();
+        $users = $this->ProjectUsers->Users->find('list', ['limit' => 200])->all();
+        $roles = $this->ProjectUsers->Roles->find('list', ['limit' => 200])->all();
+        $this->set(compact('projectUser', 'users', 'roles'));
+
+        //List USER
+        $prjectId = $this->request->getParam('pass')[0];
         $this->paginate = [
             'contain' => ['Projects', 'Users', 'Roles'],
         ];
         $projectUsers = $this->paginate($this->ProjectUsers->find()
-            ->where(['project_id' => $projectId]));
+            ->where(['project_id' => $prjectId]));
 
-        $this->set(compact('projectUsers', 'projectId'));
+        $this->set(compact('projectUsers'));
     }
 
     /**
@@ -45,30 +58,7 @@ class ProjectUsersController extends AppController
         $this->set(compact('projectUser'));
     }
 
-    /**
-     * Add method
-     *
-     * @return \Cake\Http\Response|null|void Redirects on successful add, renders view otherwise.
-     */
-    public function add()
-    {
-        $projectUser = $this->ProjectUsers->newEmptyEntity();
-        if ($this->request->is('post')) {
-            $projectId = $this->request->getData('project_id');
-            $projectUser = $this->ProjectUsers->patchEntity($projectUser, $this->request->getData());
-            if ($this->ProjectUsers->save($projectUser)) {
-                $this->Flash->success(__('The project user has been saved.'));
 
-                return $this->redirect('projectUsers/index/'.$projectId);
-            }
-            $this->Flash->error(__('The project user could not be saved. Please, try again.'));
-        }
-        $projects = $this->ProjectUsers->Projects->find('list', ['limit' => 200])->all();
-        $users = $this->ProjectUsers->Users->find('list', ['limit' => 200])->all();
-        $roles = $this->ProjectUsers->Roles->find('list', ['limit' => 200])->all();
-        $this->set(compact('projectUser', 'projects', 'users', 'roles'));
-
-    }
 
     /**
      * Edit method
@@ -106,15 +96,10 @@ class ProjectUsersController extends AppController
      */
     public function delete($id = null)
     {
+        $projectId = $this->request->getParam('pass')[1];
         $this->request->allowMethod(['post', 'delete']);
         $projectUser = $this->ProjectUsers->get($id);
-        $projectId = $projectUser->project_id;
-        if ($this->ProjectUsers->delete($projectUser)) {
-            $this->Flash->success(__('The project user has been deleted.'));
-        } else {
-            $this->Flash->error(__('The project user could not be deleted. Please, try again.'));
-        }
-
-        return $this->redirect('projectUsers/index/'.$projectId);
+        $this->ProjectUsers->delete($projectUser);
+        return $this->redirect(['action' => 'index/' . $projectId . '/?' . $projectId]);
     }
 }
