@@ -3,6 +3,8 @@
 * @var \App\View\AppView $this
 * @var \App\Model\Entity\Project $project
 * @var \Cake\Collection\CollectionInterface|string[] $users
+*
+* @var array $users
 */
 ?> 
 <div class="flex flex-col mx-8 py-3">

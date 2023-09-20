@@ -67,6 +67,7 @@ class ProjectUsersController extends AppController
         $users = $this->ProjectUsers->Users->find('list', ['limit' => 200])->all();
         $roles = $this->ProjectUsers->Roles->find('list', ['limit' => 200])->all();
         $this->set(compact('projectUser', 'projects', 'users', 'roles'));
+
     }
 
     /**

@@ -62,7 +62,8 @@ class ProjectsController extends AppController
 
         $userId = $this->Authentication->getResult()->getData()['id'];
         $user = $this->Projects->Users->get($userId);
-        $this->set(compact('project', 'user'));
+        $users = $this->Projects->Users->find('all');
+        $this->set(compact('project', 'user', 'users'));
     }
 
     /**
