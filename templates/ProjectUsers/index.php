@@ -5,11 +5,12 @@
  * @var iterable<\App\Model\Entity\ProjectUser> $projectUsers
  */
 
+$projectId = $_SERVER['QUERY_STRING'];
 ?>
 <div class="mx-8 py-3">
     <h2 class="text-3xl font-[500] border-b-[0.05px] pb-4 mb-4">Membres du projet</h2>
     <div class="flex space-x-1 items-center text-gray-800 text-sm">
-        <a href="/projectUsers/add/?<?= $projectId ?>" class="py-2 px-3 text-white rounded-md bg-primary hover:bg-[#427dbb] cursor-pointer"><i class="bi bi-person-plus"></i> Ajouter un membres</a>
+        <button data-dropdown-toggle="addUser" class="py-2 px-3 text-white rounded-md bg-primary hover:bg-[#427dbb] cursor-pointer"><i class="bi bi-person-plus"></i> Ajouter un membres</button>
 
         <form>
             <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
@@ -88,16 +89,16 @@
                         </th>
                         <th scope="row" class="table-th ">
                             <div class="flex justify-between">
-                                <a href="/projectUsers/edit/<?= $projectUser->id ?>" data-tooltip-target="tooltip-edit" class="hover:bg-gray-300 font-medium rounded-lg text-sm px-5 py-2 text-center inline-flex items-center" type="button">
+                                <!-- <a href="/projectUsers/edit/ class="hover:bg-gray-300 font-medium rounded-lg text-sm px-5 py-2 text-center inline-flex items-center" type="button">
                                     <i class="bi bi-pencil-square"></i>
-                                </a>
+                                </a> -->
                                 <?= $this->Form->postLink(
                                     __(''),
-                                    ['action' => 'delete', $projectUser->id],
+                                    ['action' => 'delete', $projectUser->id . '/'. $projectUser->project_id],
                                     [
                                         'confirm' => __('Voulez vous vraiment supprimer ce membre du projet ?'),
-                                         'class' => 'bi bi-person-x text-lg hover:bg-gray-300 font-medium rounded-lg px-5 py-2 text-center inline-flex items-center'
-                                         ]
+                                        'class' => 'bi bi-person-x text-lg hover:bg-gray-300 font-medium rounded-lg px-5 py-2 text-center inline-flex items-center'
+                                    ]
                                 ) ?>
                             </div>
                         </th>
@@ -114,4 +115,33 @@
             </tbody>
         </table>
     </div>
+</div>
+
+<!-- DROPDOWN ADD USER -->
+<!-- Dropdown menu -->
+<div id="addUser" class="z-10 hidden w-auto bg-white divide-y divide-gray-100 rounded-lg shadow">
+    <di class="p-3 space-y-1 text-sm text-gray-900 " aria-labelledby="">
+        <?= $this->Form->create($projectUser) ?>
+        <div class="flex flex-col items-center p-3">
+            <?php
+            echo $this->Form->control('project_id', [
+                'type' => 'hidden',
+                'value' =>  $projectId,
+            ]);
+
+            echo $this->Form->control('user_id', [
+                'options' => $users,
+                'label' => '',
+                'class' => 'py-[6px] px-2 w-[200px] rounded-md border-gray-300 mb-4'
+            ]);
+            echo $this->Form->control('role_id', [
+                'options' => $roles,
+                'label' => '',
+                'class' => 'py-[6px] px-2 w-[200px] rounded-md border-gray-300 mb-4'
+            ]);
+            ?>
+            <button type="submit" class="btn bg-primary w-full">Ajouter au membres</button>
+            <?= $this->Form->end() ?>
+        </div>
+    </di>
 </div>
