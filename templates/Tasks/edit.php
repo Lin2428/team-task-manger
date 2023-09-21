@@ -25,8 +25,8 @@ $projectId = $_SERVER['QUERY_STRING'];
                 <label for="user_id" class="text-gray-500">Tâche attribué à</label><br>
                 <select name="user_id" id="user_id" class="py-[6px] px-2 rounded-md border-gray-300">
                     <option selected value="<?= $task->user->id ?>"><?= $task->user->name ?></option>
-                    <?php foreach ($users as $user) : ?>
-                        <option value="<?= $user->id ?>"><?= $user->name ?></option>
+                    <?php foreach ($projectUsers as $projectUser) : ?>
+                        <option value="<?= $projectUser->user->id ?>"><?= $projectUser->user->name ?></option>
                     <?php endforeach ?>
                 </select>
             </div>

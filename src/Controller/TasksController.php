@@ -57,6 +57,7 @@ class TasksController extends AppController
         $projectId = $this->request->getEnv('QUERY_STRING');
         $task = $this->Tasks->newEmptyEntity();
         if ($this->request->is('post')) {
+            $projectId = $this->request->getData('project_id');
             $task = $this->Tasks->patchEntity($task, $this->request->getData());
             if ($this->Tasks->save($task)) {
                 //$this->Flash->success(__('The task has been saved.'));
@@ -66,9 +67,11 @@ class TasksController extends AppController
             //$this->Flash->error(__('The task could not be saved. Please, try again.'));
         }
         $projects = $this->Tasks->Projects->find();
-        $users = $this->Tasks->Users->ProjectUsers->find()->where(['project_id' => $projectId]);
+        $projectUsers = $this->Tasks->Users->ProjectUsers->find('all', [
+            'contain' => ['Users']
+        ])->where(['project_id' => $projectId]);
         $creators = $this->Authentication->getResult()->getData()['id'];
-        $this->set(compact('task', 'projects', 'users', 'creators'));
+        $this->set(compact('task', 'projects', 'projectUsers', 'creators'));
     }
 
     /**
@@ -80,6 +83,7 @@ class TasksController extends AppController
      */
     public function edit($id = null)
     {
+        $projectId = $this->request->getEnv('QUERY_STRING');
         $task = $this->Tasks->get($id, [
             'contain' => ['Projects', 'Users'],
         ]);
@@ -94,9 +98,11 @@ class TasksController extends AppController
             //$this->Flash->error(__('The task could not be saved. Please, try again.'));
         }
         $projects = $this->Tasks->Projects->find();
-        $users = $this->Tasks->Users->find();
+        $projectUsers = $this->Tasks->Users->ProjectUsers->find('all', [
+            'contain' => ['Users']
+        ])->where(['project_id' => $projectId]);
         $creators = $this->Authentication->getResult()->getData()['id'];
-        $this->set(compact('task', 'projects', 'users', 'creators'));
+        $this->set(compact('task', 'projects', 'projectUsers', 'creators'));
     }
 
     /**
