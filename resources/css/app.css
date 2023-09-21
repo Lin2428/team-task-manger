@@ -145,7 +145,7 @@
 }
 
 .user-main-contente{
-    @apply fixed right-0 col-span-4 w-[80%]  h-[90%] bg-white rounded-l-md;
+    @apply fixed right-0 col-span-4 w-[80%]  h-[92%] bg-white rounded-l-md;
     overflow: auto;
 }
 
@@ -232,4 +232,8 @@
 
 .message-user{
     @apply flex mb-3 border-t p-2 font-sans min-w-[150px];
+}
+
+.write-message{
+    @apply fixed bottom-0 w-full max-w-[78.5%] bg-white px-1;
 }

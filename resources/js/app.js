@@ -5,3 +5,4 @@ import configureEditor from './tinymce';
 
 configureEditor('#description');
 
+configureEditor('#message', '250');

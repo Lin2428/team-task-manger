@@ -19,14 +19,15 @@ class MessagesController extends AppController
      */
     public function index()
     {
+        $projectId = $this->request->getParam('pass')[0];
         $this->paginate = [
             'contain' => ['Users', 'Projects'],
         ];
         $messages = $this->paginate(
             $this->Messages->find()
-        ->where(['project_id' => 1]));
+        ->where(['project_id' => $projectId]));
 
-        $this->set(compact('messages'));
+        $this->set(compact('messages', 'projectId'));
     }
 
     /**
