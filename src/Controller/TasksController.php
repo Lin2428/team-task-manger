@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use PhpParser\Node\Expr\List_;
+
 /**
  * Tasks Controller
  *
@@ -25,7 +27,7 @@ class TasksController extends AppController
         ];
         $tasks = $this->paginate($this->Tasks->find()
             ->where(['project_id' => $projectId]));
-    
+
         $this->set(compact('tasks', 'projectId'));
     }
 
@@ -52,19 +54,19 @@ class TasksController extends AppController
      */
     public function add()
     {
+        $projectId = $this->request->getEnv('QUERY_STRING');
         $task = $this->Tasks->newEmptyEntity();
         if ($this->request->is('post')) {
-            $projectId = $this->request->getData('project_id');
             $task = $this->Tasks->patchEntity($task, $this->request->getData());
             if ($this->Tasks->save($task)) {
                 //$this->Flash->success(__('The task has been saved.'));
 
-                return $this->redirect(['action' => 'index/'.$projectId]);
+                return $this->redirect(['action' => 'index/' . $projectId]);
             }
             //$this->Flash->error(__('The task could not be saved. Please, try again.'));
         }
         $projects = $this->Tasks->Projects->find();
-        $users = $this->Tasks->Users->find();
+        $users = $this->Tasks->Users->ProjectUsers->find()->where(['project_id' => $projectId]);
         $creators = $this->Authentication->getResult()->getData()['id'];
         $this->set(compact('task', 'projects', 'users', 'creators'));
     }
@@ -87,7 +89,7 @@ class TasksController extends AppController
             if ($this->Tasks->save($task)) {
                 //$this->Flash->success(__('The task has been saved.'));
 
-                return $this->redirect(['action' => 'index/'.$projectId]);
+                return $this->redirect(['action' => 'index/' . $projectId]);
             }
             //$this->Flash->error(__('The task could not be saved. Please, try again.'));
         }
@@ -115,6 +117,6 @@ class TasksController extends AppController
             //$this->Flash->error(__('The task could not be deleted. Please, try again.'));
         }
 
-        return $this->redirect(['action' => 'index/'.$projectId]);
+        return $this->redirect(['action' => 'index/' . $projectId]);
     }
 }
