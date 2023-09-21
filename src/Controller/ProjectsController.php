@@ -51,7 +51,9 @@ class ProjectsController extends AppController
     {
         $project = $this->Projects->newEmptyEntity();
         if ($this->request->is('post')) {
+           
             $project = $this->Projects->patchEntity($project, $this->request->getData());
+
             if ($this->Projects->save($project)) {
                 $this->Flash->success(__('The project has been saved.'));
 
@@ -62,8 +64,11 @@ class ProjectsController extends AppController
 
         $userId = $this->Authentication->getResult()->getData()['id'];
         $user = $this->Projects->Users->get($userId);
-        $users = $this->Projects->Users->find('all');
-        $this->set(compact('project', 'user', 'users'));
+        $users = $this->Projects->Users->find('list');
+
+        $roles = $this->Projects->ProjectUsers->Roles->find('list');
+
+        $this->set(compact('project', 'user', 'users', 'roles'));
     }
 
     /**
