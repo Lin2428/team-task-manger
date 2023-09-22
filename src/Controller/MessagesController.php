@@ -19,15 +19,20 @@ class MessagesController extends AppController
      */
     public function index()
     {
-        $projectId = $this->request->getParam('pass')[0];
-        $this->paginate = [
-            'contain' => ['Users', 'Projects'],
-        ];
-        $messages = $this->paginate(
-            $this->Messages->find()
-        ->where(['project_id' => $projectId]));
+        //Add Message
+        $message = $this->Messages->newEmptyEntity();
+        if (!empty($this->request->getData())) {
+            $message = $this->Messages->patchEntity($message, $this->request->getData());
+            $this->Messages->save($message);
+        }
 
-        $this->set(compact('messages', 'projectId'));
+        //List Message
+        $projectId = $this->request->getParam('pass')[0];
+        $messages = $this->Messages->find('all',[
+            'contain' => ['Users', 'Projects'],
+        ])->where(['project_id' => $projectId]);
+
+        $this->set(compact('message', 'messages', 'projectId'));
     }
 
     /**

@@ -76,7 +76,7 @@
                                         <div class="tooltip-arrow" data-popper-arrow></div>
                                     </div>
                                 </a>
-                                <a href="#" data-tooltip-target="tooltip-open-message" class=" ml-2 px-4  h-full border-l"><i class="bi bi-chat-dots text-lg text-gray-700"></i></a>
+                                <a href="/messages/index/<?= $task->project->id ?>" data-tooltip-target="tooltip-open-message" class=" ml-2 px-4  h-full border-l"><i class="bi bi-chat-dots text-lg text-gray-700"></i></a>
                                 <div id="tooltip-open-message" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
                                     Démarer la conversation
                                     <div class="tooltip-arrow" data-popper-arrow></div>

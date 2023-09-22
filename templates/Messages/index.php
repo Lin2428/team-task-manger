@@ -16,7 +16,7 @@ $id = $_SESSION['Auth']->id;
 <div class="mx-8 py-3">
     <h2 class="text-3xl font-[500] border-b-[0.05px] pb-4 mb-4">Message du project</h2>
     <div class="mb-[18rem]">
-        <?php foreach ($messages as $message) : ?>
+        <?php foreach ($messages as $k => $message) : ?>
             <div class="message-user">
                 <p class="">
                     <a href="/users/view/<?= $message->user->id ?>" class="text-sm font-bold hover:text-primary"><?= $message->user_id == $id ? "Vous" : $message->user->name ?></a><br>
@@ -28,7 +28,7 @@ $id = $_SESSION['Auth']->id;
 </div>
 
 <div class="write-message">
-    <?= $this->Form->create() ?>
+    <?= $this->Form->create($message, ['action' => '/messages/index/'.$projectId]) ?>
     <div class="flex justify-end absolute z-50 right-4 bottom-[11rem]">
         <button class="px-3 py-1 text-white rounded-md bg-primary">Envoyer</button>
     </div>

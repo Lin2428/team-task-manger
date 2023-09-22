@@ -231,7 +231,7 @@
 /*------------- Message ----------------*/
 
 .message-user{
-    @apply flex mb-3 border-t p-2 font-sans min-w-[150px];
+    @apply mb-3 border-t p-2 font-sans min-w-[150px];
 }
 
 .write-message{
